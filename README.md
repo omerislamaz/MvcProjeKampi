@@ -46,7 +46,7 @@ Geliştirme Yaklaşımı olarak;
   
  * Projede ortak olarak ihtiyaç duyulan CRUD işlemleri için tek bir yerden kullanımını sağlayan
 
-    * Generic Repository tasarımı kullanıldı.
+    * Repository Design Pattern tasarımı kullanıldı.
   
 Veri Tabanı olarak;
 

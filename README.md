@@ -68,6 +68,7 @@ Tasarım olarak;
 * Css,
 * JavaScript,
 * Alert Message,
+* SweetAlert,
 * ve IFrame ile site üzerine Harita bilgisi eklendi.
 
 ### Screenshots / Ekran Görüntüleri

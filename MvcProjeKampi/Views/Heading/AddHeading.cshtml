@@ -1,0 +1,60 @@
+﻿@model EntityLayer.Concrete.Heading
+@{
+    ViewBag.Title = "AddHeading";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+
+
+
+<h1>Yeni Başlık Ekleme</h1>
+
+<br />
+
+@using (Html.BeginForm("AddHeading", "Heading", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.Label("Başlık Adı")
+        @Html.TextBoxFor(x => x.HeadingName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.HeadingName)
+        <br />
+        @Html.Label("Kategori")
+        @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.vlc, new { @class = "form-control" })
+        <br />
+        @Html.Label("Yazar")
+        @Html.DropDownListFor(x => x.WriterID, (List<SelectListItem>)ViewBag.vwm, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Writer.WriterName)
+        <br />
+
+        <button class="btn btn-info" id="btncreate">Başlık Oluştur</button>
+        <a href="/Heading/Index/" class="btn btn-outline-info" style="float:right" id="btnback">Geri Dön</a>
+    </div>
+}
+
+<script>
+    $('#btn').click(function () {
+        swal("Tebrikler!", "Başarılı bir şekilde eklendi", "success");
+    });
+</script>
+
+<script>
+    $('#btncreate').click(function () {
+        swal({
+            title: "Emin misin?",
+            text: "Bilgilerin Kaybolacak!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    swal("Başlıklar Sayfına Yönlendiriliyor!", {
+                        icon: "success",
+                    });
+                } else {
+                    swal("Kayıta devam edebilirsin.");
+                }
+            });
+    });
+</script>

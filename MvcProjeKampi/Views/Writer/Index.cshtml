@@ -1,0 +1,73 @@
+﻿@using EntityLayer.Concrete
+@model List<Writer>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<body class="hold-transition sidebar-mini">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Yazarlar Sayfası</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="content">
+        <div class="card card-solid">
+            <div class="card-body pb-0">
+                <div class="row d-flex align-items-stretch">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-12 col-sm-2 col-md-2 d-flex align-items-stretch">
+                            <div class="card bg-light">
+                                <div class="card-body pt-sm-5">
+                                    <div class="row">
+                                        <div class="col-10">
+                                            <div class="col-8 col-lg-8"  style="margin-inline:auto">
+                                                <img src="@item.WriterImage" alt="" class="img-circle img-fluid ">
+                                            </div>
+                                            <br />
+                                            <div class="col-12 col-md-12" style="text-align:center">
+                                                <div class="header-tabs align-text-top border-primary">
+                                                    @item.WriterTitle
+                                                </div>
+                                                <div class="align-content-lg-center">
+                                                    <h2 class="text"><b>@item.WriterName @item.WriterSurName</b></h2>
+                                                </div>
+                                            </div>
+                                            <p class="border-danger"><b>Hakkında:</b> @item.WritingAbout. </p>
+                                            <ul class="col-1  2 mb-md-1 col-md-12 fa-ul">
+                                                <li><span class="fa-li"><i class="fas fa-lg fa-envelope"></i></span>@item.WriterMail</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div>
+                                        <span>
+                                            <a href="#" class="btn btn-sm bg-teal">
+                                                <i class="fas fa-comments"></i> Başlıklar
+                                            </a>
+                                        </span>
+                                        <br />
+                                        <br />
+                                        <span>
+                                            <a href="/Writer/EditWriter/@item.WriterID" class="btn btn-sm btn-primary">
+                                                <i class="fas fa-user"></i> Profil Düzenle
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

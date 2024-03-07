@@ -1,0 +1,61 @@
+﻿@model EntityLayer.Concrete.Category
+@{
+    ViewBag.Title = "AddCategory";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+
+
+
+<h1>Yeni Kategori Ekleme Sayfası</h1>
+<br />
+
+@using (Html.BeginForm("AddCategory", "AdminCategory", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.Label("Kategori Adını Giriniz")
+        @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.CategoryName)
+        <br />
+        <br />
+
+
+        @Html.Label("Açıklama Giriniz")
+        @Html.TextAreaFor(x => x.CategoryDescription, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.CategoryDescription)
+    </div>
+
+    <br />
+    <br />
+
+    <button class="btn btn-info" id="btn1">Kaydet</button>
+    <a href="/AdminCategory/Index/" class="btn btn-outline-info" style="float:right" id="btnback">Geri Dön</a>
+
+}
+
+<script>
+    $('#btn1').click(function () {
+        swal("Tebrikler!", "Başarılı bir şekilde eklendi", "success");
+    });
+</script>
+
+<script>
+    $('#btnback').click(function () {
+        swal({
+            title: "Emin misin?",
+            text: "Bilgilerin Kaybolacak!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    swal("Başlıklar Sayfına Yönlendiriliyor!", {
+                        icon: "success",
+                    });
+                } else {
+                    swal("Kayıta devam edebilirsin.");
+                }
+            });
+</script>
